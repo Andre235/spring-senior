@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author : Jeffersonnn
@@ -18,7 +19,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "employee")
 @EntityListeners(AuditingEntityListener.class)
-public class Employee {
+public class Employee implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

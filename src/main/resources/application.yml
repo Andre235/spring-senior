@@ -15,6 +15,10 @@ spring:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
       format_sql: true
     show-sql: true
+  redis:
+    host: 192.168.10.131 #配置redis地址
+
 logging:
   level:
     root: info #日志等级
+
