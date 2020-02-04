@@ -28,6 +28,10 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 192.168.10.131:9300
+  mail: # 邮件服务配置
+    username: andre215000@163.com
+    password: netcloud20 # 授权码
+    host: smtp.163.com
 
 logging:
   level:

@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,6 +42,9 @@ class SpringSeniorApplicationTests {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+    @Autowired
+    JavaMailSenderImpl mailSender;
+
     /**
      * 管理RabbitMQ消息组件(交换器、队列等组件)
      */
@@ -54,6 +59,21 @@ class SpringSeniorApplicationTests {
 
     @Autowired
     ArticleRepository articleRepository;
+
+    /**
+     * 发送简单邮件
+     */
+    @Test
+    void sendMail(){
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        //邮件标题
+        simpleMailMessage.setSubject("开会通知");
+        simpleMailMessage.setText("今晚七点在大会议室开会。");
+        simpleMailMessage.setTo("2356430623@qq.com");
+        simpleMailMessage.setFrom("andre215000@163.com");
+
+        mailSender.send(simpleMailMessage);
+    }
 
     /**
      * 通过SpringData elasticsearch方式实现新增一条数据

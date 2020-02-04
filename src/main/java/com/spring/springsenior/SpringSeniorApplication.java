@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 /**
@@ -16,6 +18,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  *      @CacheEvict
  *      @CachePut
  */
+@EnableScheduling //开启基于注解的定时任务
+@EnableAsync
 @EnableRabbit //开启基于注解的RabbitMQ模式
 @EnableJpaAuditing
 @SpringBootApplication
