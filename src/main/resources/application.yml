@@ -3,11 +3,11 @@ server:
   servlet:
     context-path: "/spring"
 spring:
-  datasource:
+  datasource: # mysql数据库相关配置
     url: jdbc:mysql:///spring_senior?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
-  jpa:
+  jpa: #JPA相关配置
     hibernate:
       ddl_auto: update
       hbm2ddl:
@@ -15,9 +15,12 @@ spring:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
       format_sql: true
     show-sql: true
-  redis:
-    host: 192.168.10.131 #配置redis地址
-
+  redis: # Redis相关配置
+    host: 192.168.10.131
+  rabbitmq: # rabbitMQ相关配置
+    host: 192.168.10.131
+    username: guest
+    password: guest
 logging:
   level:
     root: info #日志等级
