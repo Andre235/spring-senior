@@ -21,6 +21,14 @@ spring:
     host: 192.168.10.131
     username: guest
     password: guest
+  elasticsearch: #ES相关配置
+    jest: #jest对ES的支持
+      uris: http://192.168.10.131:9200
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.10.131:9300
+
 logging:
   level:
     root: info #日志等级

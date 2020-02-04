@@ -1,8 +1,12 @@
 package com.spring.springsenior;
 
+import com.spring.springsenior.ElasticSearch.entity.Article;
+import com.spring.springsenior.ElasticSearch.repository.ArticleRepository;
 import com.spring.springsenior.RabbitMQ.entity.Book;
 import com.spring.springsenior.cache.entity.Employee;
 import com.spring.springsenior.cache.service.EmployeeService;
+import io.searchbox.client.JestClient;
+import io.searchbox.core.Index;
 import org.junit.jupiter.api.Test;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.DirectExchange;
@@ -12,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -40,6 +45,36 @@ class SpringSeniorApplicationTests {
      */
     @Autowired
     AmqpAdmin amqpAdmin;
+
+    /**
+     * 注入JestClient对ES进行操作
+     */
+    @Autowired
+    JestClient jestClient;
+
+    @Autowired
+    ArticleRepository articleRepository;
+
+    /**
+     * 通过SpringData elasticsearch方式实现新增一条数据
+     */
+    @Test
+    void index(){
+        Article article = new Article(1, "吴承恩", "西游记", "三打白骨精");
+        articleRepository.index(article);
+    }
+
+    /**
+     * 通过JestClient向ES中构建一个索引
+     */
+    @Test
+    void createESIndex() throws IOException {
+        //new 一个对象用于构建索引
+        Article article = new Article(1, "好消息", "张三", "hello world");
+        //构建一个index索引
+        Index builder = new Index.Builder(article).index("atguigu").type("news").build();
+        jestClient.execute(builder);
+    }
 
     /**
      * 添加一个DirectExchange交换器
