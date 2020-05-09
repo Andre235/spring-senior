@@ -1,0 +1,14 @@
+spring:
+  datasource: # mysql数据库相关配置
+    url: jdbc:mysql:///spring_senior?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+  security:
+    basic:
+      path: /swagger-ui.html # spring security的拦截路径
+      enabled: true
+    user:
+      name: admin # swagger2-ui页面的登录名和密码
+      password: 123456
+
+
