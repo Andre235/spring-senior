@@ -11,4 +11,5 @@ spring:
       name: admin # swagger2-ui页面的登录名和密码
       password: 123456
 
-
+swagger:
+  enable: true # 是否开启swagger api接口文档功能
