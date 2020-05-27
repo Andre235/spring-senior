@@ -1,7 +1,14 @@
 package com.geek.controller;
 
+import com.geek.dto.CityDTO;
+import com.geek.entity.CityEntity;
+import com.geek.service.AreaService;
 import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author : 赵静超
@@ -9,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
  * @description :
  */
 @RestController
-@RequestMapping("/api/v1/users")
-@Api(value = "User API接口",tags = "user")
-public class UserController {
+//@RequestMapping("/api/v1/users")
+//@Api(value = "User API接口",tags = "user")
+public class UserController{
 
     @ApiOperation("用户登录接口")
     @PostMapping("/login")
@@ -43,5 +50,4 @@ public class UserController {
     public String removeUser(@PathVariable Long id){
         return "成功删除id为"+id+"的用户";
     }
-
 }

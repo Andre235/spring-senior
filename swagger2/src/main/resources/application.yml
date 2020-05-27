@@ -1,3 +1,8 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /test
+
 spring:
   datasource: # mysql数据库相关配置
     url: jdbc:mysql:///spring_senior?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
@@ -10,6 +15,14 @@ spring:
     user:
       name: admin # swagger2-ui页面的登录名和密码
       password: 123456
+  jpa: #JPA相关配置
+    hibernate:
+      ddl_auto: update
+      hbm2ddl:
+        auto: create
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      format_sql: true
+    show-sql: true
 
 swagger:
-  enable: true # 是否开启swagger api接口文档功能
+  enable: false # 是否开启swagger api接口文档功能
