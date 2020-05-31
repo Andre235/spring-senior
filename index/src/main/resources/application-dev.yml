@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: "/spring"
+spring:
+  datasource: # mysql数据库相关配置
+    url: jdbc:mysql:///spring_senior?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa: #JPA相关配置
+    hibernate:
+      ddl_auto: update
+      hbm2ddl:
+        auto: create
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      format_sql: true
+    show-sql: true
+  redis: # Redis相关配置
+    host: 192.168.10.131
+  mail: # 邮件服务配置
+    username: andre215000@163.com
+    password: netcloud20 # 授权码
+    host: smtp.163.com
+  elasticsearch:
+    ip: 192.168.10.131
+    port: 9300
+    clusterName: my-cluster
+    nodeName: node-1
+    pool: 5 # ES线程池
+
+swagger:
+  enable: false # 是否开启swagger api接口文档功能
+
+logging:
+  level:
+    root: info #日志等级
+
